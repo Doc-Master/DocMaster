@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocMaster &mdash; User Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="guide">
+
+    <nav id="main-nav"></nav>
+
+    <!-- Page Header -->
+    <section class="subpage-hero">
+        <div class="container">
+            <div class="section-label">User Guide</div>
+            <h1 class="subpage-title">Get Started with DocMaster</h1>
+            <p class="subpage-desc">
+                DocMaster makes it easy to filter and analyze large document collections using natural language.
+                Follow these five simple steps to go from raw PDFs to intelligent insights.
+            </p>
+        </div>
+    </section>
+
+    <!-- Demo System Layout Figure -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Interface Overview</div>
+                <h2 class="section-title">Demo System Layout</h2>
+                <p class="section-desc">
+                    DocMaster uses a clean two-column layout: manage your documents on the left, filter and chat on the right.
+                </p>
+            </div>
+            <div class="arch-figure-wrapper">
+                <div class="figure-placeholder large" id="guide-fig-demo">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    <p>Demo System Layout Figure</p>
+                    <span class="figure-placeholder-hint">Image will be inserted here</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Start -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Quick Start</div>
+                <h2 class="section-title">Five Steps to Document Intelligence</h2>
+                <p class="section-desc">Each step builds on the last. You can complete the entire workflow in under a minute.</p>
+            </div>
+
+            <div class="guide-steps">
+                <div class="guide-step">
+                    <div class="guide-step-number">1</div>
+                    <div class="guide-step-content">
+                        <h3>Upload Your Documents</h3>
+                        <p>Head to the <a href="demo.html">live demo</a> and drag-and-drop your PDF files into the upload area. DocMaster will automatically parse each document, extract its structure, and build a semantic index &mdash; all in the background.</p>
+                        <div class="guide-detail-box">
+                            <strong>What happens behind the scenes:</strong> Each PDF is parsed with MinerU to extract headings, paragraphs, figures, and tables. A hierarchical document tree is built, embeddings are computed, and a FAISS index is created for fast retrieval.<br><br>
+                            <strong>Tip:</strong> You can upload multiple PDFs at once. The system handles collections of up to 50 MB per file.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-number">2</div>
+                    <div class="guide-step-content">
+                        <h3>Explore Document Structure</h3>
+                        <p>Select any uploaded document from the dropdown in the left panel and click <em>Load Tree</em>. The interactive tree viewer reveals how DocMaster understands your document's hierarchy.</p>
+                        <div class="guide-detail-box">
+                            <strong>What you'll see:</strong> A visual tree showing sections, subsections, text blocks, figures, and tables &mdash; each color-coded by type.<br><br>
+                            <strong>Interact:</strong> Click any node to expand its content, summary, and metadata. Use the toggle arrows to explore branches.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-number">3</div>
+                    <div class="guide-step-content">
+                        <h3>Write a Filter Condition</h3>
+                        <p>In the right panel, describe what you're looking for in plain English. Think of it as asking: <em>"Which of my documents match this description?"</em></p>
+                        <div class="guide-detail-box">
+                            <strong>Example conditions you can try:</strong>
+                            <ul>
+                                <li><em>"This paper proposes a new indexing method for databases"</em></li>
+                                <li><em>"This document discusses privacy regulations in the EU"</em></li>
+                                <li><em>"This paper presents experimental results on image classification"</em></li>
+                                <li><em>"This report contains financial projections for Q3 2025"</em></li>
+                            </ul>
+                        </div>
+                        <p style="margin-top:10px;">Click <em>Filter All Documents</em> and watch the system evaluate each document using three complementary strategies: Document Tree traversal, Hyperedge search, and a Combined approach.</p>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-number">4</div>
+                    <div class="guide-step-content">
+                        <h3>Review Your Results</h3>
+                        <p>The results panel shows you exactly which documents matched &mdash; and <em>how</em> they matched. Three summary cards display match counts per strategy, followed by a detailed per-document breakdown.</p>
+                        <div class="guide-detail-box">
+                            <strong>Understanding the strategies:</strong>
+                            <ul>
+                                <li><strong>Document Tree</strong> &mdash; traverses the hierarchy top-down, pruning irrelevant branches early (fast, structure-aware)</li>
+                                <li><strong>Hyperedge</strong> &mdash; finds cross-section semantic relationships that tree traversal might miss (deep, relation-aware)</li>
+                                <li><strong>Combined</strong> &mdash; fuses both signals for the most reliable result</li>
+                            </ul>
+                            <br>
+                            <strong>Token Usage:</strong> Check the metrics section to see how many LLM tokens each strategy consumed &mdash; you'll notice tree-based pruning is significantly more efficient.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="guide-step-number">5</div>
+                    <div class="guide-step-content">
+                        <h3>Ask Questions with RAG Q&amp;A</h3>
+                        <p>Now that you've identified relevant documents, use the built-in chat to ask follow-up questions. DocMaster retrieves the most relevant passages and generates answers with source citations.</p>
+                        <div class="guide-detail-box">
+                            <strong>Query scope:</strong> Toggle between <em>All documents</em> or <em>Matched documents only</em> to focus your questions on filtered results.<br><br>
+                            <strong>Pro tip:</strong> Try asking comparative questions like <em>"What methods are used across the matched papers?"</em> to leverage the multi-document context.<br><br>
+                            <strong>Keyboard shortcut:</strong> Press <kbd>Enter</kbd> to send, <kbd>Shift+Enter</kbd> for a new line.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Configuration -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Advanced Settings</h2>
+                <p class="section-desc">
+                    Fine-tune the system via the collapsible settings panel on the demo page. Most users won't need to change these.
+                </p>
+            </div>
+            <div class="settings-guide-grid">
+                <div class="settings-guide-item">
+                    <h4>Filter Top K</h4>
+                    <p>Controls how many top chunks are retrieved to make the filter decision. Higher values provide more evidence but use more LLM tokens. Default: <strong>10</strong>.</p>
+                </div>
+                <div class="settings-guide-item">
+                    <h4>RAG Top K</h4>
+                    <p>Controls how many passages are retrieved for Q&amp;A answers. Higher values give broader context. Default: <strong>5</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section-alt" style="text-align:center;">
+        <div class="container">
+            <h2 class="section-title">Ready to get started?</h2>
+            <p class="section-desc" style="margin: 0 auto 24px;">Upload your first document and experience DocMaster's filtering and Q&amp;A in action.</p>
+            <a href="demo.html" class="btn-primary">Try the Live Demo</a>
+        </div>
+    </section>
+
+    <footer id="main-footer"></footer>
+
+    <script src="template.js"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocMaster: LLM-Powered Document-Level Filtering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="home">
+
+    <nav id="main-nav"></nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badge">VLDB 2026 &mdash; Demo Track</div>
+            <h1>DocMaster: LLM-Powered Document-Level Filtering for Database Systems</h1>
+            <p class="hero-abstract">
+                We present <strong>DocMaster</strong>, a novel semantic filter operator for database query pipelines.
+                Given a natural-language condition, the system builds indexes among multiple documents, filters out
+                target documents based on user queries, and provides comprehensive analysis &mdash; all without
+                reading every document in full &mdash; by combining hierarchical document tree traversal with
+                hyperedge-based semantic retrieval.
+            </p>
+            <div class="hero-actions">
+                <a href="demo.html" class="btn-primary">Try the Live Demo</a>
+                <a href="architecture.html" class="btn-outline">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Capabilities</div>
+                <h2 class="section-title">Key Features</h2>
+                <p class="section-desc">DocMaster combines structural and semantic analysis to deliver efficient, accurate document-level filtering.</p>
+            </div>
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="card-icon icon-blue">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>Document Tree Search</h3>
+                    <p>Builds a hierarchical tree from structural elements. The LLM traverses top-down, pruning irrelevant branches to minimise token usage.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon icon-teal">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2a10 10 0 0 1 0 20 10 10 0 0 1 0-20"/><path d="M2 12h4M18 12h4M12 2v4M12 18v4"/></svg>
+                    </div>
+                    <h3>Hyperedge Search</h3>
+                    <p>Extracts cross-chunk semantic relationships as hyperedges. FAISS-based retrieval finds the most relevant hyperedges for relation-aware filtering.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon icon-purple">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
+                    <h3>Combined Strategy</h3>
+                    <p>Aggregates evidence from both strategies. Fusing structural and relational signals achieves higher precision and recall than either alone.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon icon-green">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+                    </div>
+                    <h3>Token-Efficient Design</h3>
+                    <p>Tree-traversal prunes irrelevant subtrees early, significantly reducing LLM token consumption compared to naive full-document retrieval.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon icon-orange">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3>RAG Q&amp;A Integration</h3>
+                    <p>After filtering, perform retrieval-augmented Q&amp;A over matched documents using the same indexed embeddings for seamless document intelligence.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon icon-blue">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3>Multi-Document Collections</h3>
+                    <p>Upload an entire collection of PDFs. The system processes, indexes, and evaluates the filter condition across all documents in a single query.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Figure Placeholders -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">How It Works</div>
+                <h2 class="section-title">System at a Glance</h2>
+                <p class="section-desc">From document ingestion to semantic filtering and RAG-powered analysis.</p>
+            </div>
+            <div class="figure-gallery">
+                <div class="figure-card">
+                    <div class="figure-placeholder" id="fig-workflow">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="8" cy="6" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="16" cy="18" r="1.5" fill="currentColor"/></svg>
+                        <p>Workflow Pipeline Figure</p>
+                        <span class="figure-placeholder-hint">Image will be inserted here</span>
+                    </div>
+                    <div class="figure-caption">
+                        <h4>Workflow Pipeline</h4>
+                        <p>End-to-end flow from PDF upload through parsing, indexing, filtering, to RAG Q&amp;A output.</p>
+                    </div>
+                </div>
+                <div class="figure-card">
+                    <div class="figure-placeholder" id="fig-index">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        <p>Index Construction Figure</p>
+                        <span class="figure-placeholder-hint">Image will be inserted here</span>
+                    </div>
+                    <div class="figure-caption">
+                        <h4>Index Construction</h4>
+                        <p>Document tree building, PC-KMeans clustering, and hyperedge extraction pipeline.</p>
+                    </div>
+                </div>
+                <div class="figure-card">
+                    <div class="figure-placeholder" id="fig-demo">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                        <p>Demo System Layout Figure</p>
+                        <span class="figure-placeholder-hint">Image will be inserted here</span>
+                    </div>
+                    <div class="figure-caption">
+                        <h4>Demo System Layout</h4>
+                        <p>Two-column interface with document management on the left and filtering/chat on the right.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Explore More</h2>
+            </div>
+            <div class="landing-grid">
+                <a href="architecture.html" class="landing-card">
+                    <div class="card-icon icon-blue">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>Architecture</h3>
+                    <p>Progressive filtering pipeline and system component stack.</p>
+                    <span class="landing-card-link">Explore &rarr;</span>
+                </a>
+                <a href="video.html" class="landing-card">
+                    <div class="card-icon icon-purple">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                    <h3>Video</h3>
+                    <p>Watch a full walkthrough of the system in action.</p>
+                    <span class="landing-card-link">Watch &rarr;</span>
+                </a>
+                <a href="guide.html" class="landing-card">
+                    <div class="card-icon icon-green">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    </div>
+                    <h3>User Guide</h3>
+                    <p>Step-by-step instructions for uploading, filtering, and querying.</p>
+                    <span class="landing-card-link">Read &rarr;</span>
+                </a>
+                <a href="examples.html" class="landing-card">
+                    <div class="card-icon icon-orange">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3>Examples</h3>
+                    <p>Interactive walkthroughs of filtering and Q&amp;A scenarios.</p>
+                    <span class="landing-card-link">View &rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="main-footer"></footer>
+
+    <script src="template.js"></script>
+</body>
+</html>

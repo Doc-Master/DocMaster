@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocMaster — Live Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="demo-page" data-page="demo" data-nav-cta-text="Back to Home" data-nav-cta-href="index.html">
+
+    <nav id="main-nav"></nav>
+
+    <!-- Two-Column Demo Layout -->
+    <div class="demo-layout">
+
+        <!-- Left Column: Upload, Config, Tree -->
+        <aside class="demo-left">
+            <div class="demo-left-header">
+                <h2>DocMaster</h2>
+                <p>Upload, configure, and explore</p>
+            </div>
+
+            <!-- Settings -->
+            <div class="settings-panel">
+                <div class="settings-header" id="settingsHeader">
+                    <div class="settings-title">Advanced Settings</div>
+                    <div class="settings-toggle" id="settingsToggle">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
+                    </div>
+                </div>
+                <div class="settings-content" id="settingsContent">
+                    <div class="setting-item">
+                        <label class="setting-label" for="filterTopK">Filter Top K</label>
+                        <div class="setting-description">Top chunks retrieved for the filter decision</div>
+                        <input type="number" id="filterTopK" value="10" min="1" max="50">
+                    </div>
+                    <div class="setting-item">
+                        <label class="setting-label" for="ragTopK">RAG Top K</label>
+                        <div class="setting-description">Top results for RAG Q&amp;A retrieval</div>
+                        <input type="number" id="ragTopK" value="5" min="1" max="20">
+                    </div>
+                    <div class="setting-item" style="justify-content:flex-end;">
+                        <button class="settings-reset" id="resetSettings">Reset Defaults</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upload -->
+            <div class="demo-step-card">
+                <div class="demo-step-title">
+                    <span class="step-num">1</span>
+                    Document Collection
+                </div>
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    </div>
+                    <div id="uploadText">
+                        <p class="upload-text-main">Click or drag to upload</p>
+                        <p class="upload-text-sub">PDF files &mdash; max 50 MB</p>
+                    </div>
+                    <input type="file" id="fileInput" accept=".pdf">
+                </div>
+                <div id="uploadStatus"></div>
+                <div class="document-list" id="documentList"></div>
+            </div>
+
+            <!-- Tree Viewer -->
+            <div class="demo-step-card">
+                <div class="demo-step-title">
+                    <span class="step-num">2</span>
+                    Document Tree
+                </div>
+                <div class="tree-controls">
+                    <select class="tree-select" id="treeDocumentSelect">
+                        <option value="">Select a document&hellip;</option>
+                    </select>
+                    <button class="btn-small" id="loadTreeBtn" disabled>Load Tree</button>
+                </div>
+                <div id="treeViewer" class="tree-viewer"></div>
+            </div>
+        </aside>
+
+        <!-- Right Column: Filter + Chat -->
+        <main class="demo-right">
+
+            <!-- Filter -->
+            <div class="demo-step-card">
+                <div class="demo-step-title">
+                    <span class="step-num">3</span>
+                    Filter Condition
+                </div>
+                <div class="filter-input-row">
+                    <input type="text"
+                           id="queryInput"
+                           placeholder="e.g., This paper discusses machine learning applications in healthcare">
+                    <button class="btn" id="filterBtn">Filter All Documents</button>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="demo-step-card results" id="resultsSection">
+                <div class="demo-step-title">
+                    <span class="step-num">4</span>
+                    Filter Results
+                </div>
+
+                <div class="results-summary">
+                    <div class="result-item" id="docTreeCard">
+                        <h4>Document Tree</h4>
+                        <div class="result-value" id="docTreeValue">&mdash;</div>
+                        <div class="result-sub">matched documents</div>
+                    </div>
+                    <div class="result-item" id="hyperedgeCard">
+                        <h4>Hyperedge</h4>
+                        <div class="result-value" id="hyperedgeValue">&mdash;</div>
+                        <div class="result-sub">matched documents</div>
+                    </div>
+                    <div class="result-item" id="combinedCard">
+                        <h4>Combined</h4>
+                        <div class="result-value" id="combinedValue">&mdash;</div>
+                        <div class="result-sub">matched documents</div>
+                    </div>
+                </div>
+
+                <div class="results-sub-label">Per-Document Breakdown</div>
+                <div class="filtered-docs" id="filteredDocs"></div>
+
+                <div class="results-sub-label" style="margin-top:0;">Token Usage</div>
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <div class="metric-value" id="docTokens">&mdash;</div>
+                        <div class="metric-label">Document Tree Tokens</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="hyperedgeTokens">&mdash;</div>
+                        <div class="metric-label">Hyperedge Tokens</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="combinedTokens">&mdash;</div>
+                        <div class="metric-label">Combined Tokens</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RAG Chat -->
+            <div class="demo-step-card demo-chat-card" id="ragChatSection">
+                <div class="chat-header-row">
+                    <div class="demo-step-title" style="margin-bottom:0;">
+                        <span class="step-num">5</span>
+                        RAG Q&amp;A Chat
+                    </div>
+                    <button class="chat-clear-btn" id="chatClearBtn">Clear chat</button>
+                </div>
+
+                <div class="chat-scope-bar">
+                    <span class="chat-scope-label">Query scope:</span>
+                    <div class="chat-scope-options" id="chatScopeOptions">
+                        <span class="scope-chip active" data-scope="all">All documents</span>
+                        <span class="scope-chip" data-scope="filtered" id="filteredScopeChip" style="display:none;">Matched documents only</span>
+                    </div>
+                </div>
+
+                <div class="chat-messages" id="chatMessages">
+                    <div class="chat-empty" id="chatEmpty">
+                        <div class="chat-empty-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <div class="chat-empty-text">
+                            Ask any question about your uploaded documents.<br>
+                            The system will retrieve relevant passages and generate an answer.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-row">
+                    <div class="chat-input-wrapper">
+                        <textarea class="chat-input" id="chatInput" placeholder="Ask a question about your documents&hellip;" rows="1"></textarea>
+                    </div>
+                    <button class="chat-send-btn" id="chatSendBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    </button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer id="main-footer"></footer>
+
+    <!-- Filter Progress Overlay -->
+    <div class="filter-progress-overlay" id="filterProgressOverlay">
+        <div class="filter-progress-card">
+            <div class="filter-progress-title">Analyzing Documents</div>
+            <div class="filter-progress-steps">
+                <div class="filter-progress-step" id="fpStep1">
+                    <div class="fp-step-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg>
+                    </div>
+                    <div class="fp-step-text">Traversing document trees</div>
+                    <div class="fp-step-status"><span class="loading loading-blue"></span></div>
+                </div>
+                <div class="filter-progress-step" id="fpStep2">
+                    <div class="fp-step-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2a10 10 0 0 1 0 20 10 10 0 0 1 0-20"/></svg>
+                    </div>
+                    <div class="fp-step-text">Searching hyperedges</div>
+                    <div class="fp-step-status"></div>
+                </div>
+                <div class="filter-progress-step" id="fpStep3">
+                    <div class="fp-step-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
+                    <div class="fp-step-text">Combining strategies</div>
+                    <div class="fp-step-status"></div>
+                </div>
+            </div>
+            <div class="filter-progress-bar">
+                <div class="filter-progress-bar-fill" id="filterProgressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sync indicator -->
+    <div class="sync-indicator" id="syncIndicator">
+        <div class="sync-dot"></div>
+        <span>Auto-sync active</span>
+    </div>
+
+    <script src="template.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
