@@ -18,71 +18,78 @@
             <div class="section-label">Architecture</div>
             <h1 class="subpage-title">System Architecture &amp; Pipeline</h1>
             <p class="subpage-desc">
-                DocMaster transforms raw PDF documents into rich semantic indexes, then evaluates
-                natural-language filter conditions using LLM-guided traversal and vector similarity search.
+                DocMaster proceeds through four stages: (1) document parsing, (2) document tree construction, (3) semantic index construction, and (4) filtering and retrieval.
             </p>
         </div>
     </section>
 
     <!-- Workflow Pipeline Figure -->
     <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">End-to-End Flow</div>
-                <h2 class="section-title">Workflow Pipeline</h2>
-                <p class="section-desc">
-                    From document upload to semantic filtering and RAG-powered question answering.
-                </p>
-            </div>
-            <div class="arch-figure-wrapper">
-                <div class="figure-placeholder large" id="arch-fig-workflow">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="8" cy="6" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="16" cy="18" r="1.5" fill="currentColor"/></svg>
-                    <p>Workflow Pipeline Figure</p>
-                    <span class="figure-placeholder-hint">Image will be inserted here</span>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">End-to-End Flow</div>
+          <h2 class="section-title">Workflow Pipeline</h2>
+          <p class="section-desc">
+            From document upload to semantic filtering and RAG-powered question answering.
+          </p>
         </div>
+    
+        <div class="arch-figure-wrapper">
+          <figure class="figure figure-large">
+            <img
+              src="figures/workflow.png"
+              alt="Workflow pipeline of DocMaster"
+              loading="lazy"
+            />
+          </figure>
+        </div>
+      </div>
     </section>
-
+    
     <!-- Index Construction Figure -->
     <section class="section section-alt">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">Indexing</div>
-                <h2 class="section-title">Index Construction</h2>
-                <p class="section-desc">
-                    Document tree building, PC-KMeans clustering, hyperedge extraction, and FAISS vector indexing.
-                </p>
-            </div>
-            <div class="arch-figure-wrapper">
-                <div class="figure-placeholder large" id="arch-fig-index">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                    <p>Index Construction Figure</p>
-                    <span class="figure-placeholder-hint">Image will be inserted here</span>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Indexing</div>
+          <h2 class="section-title">Index Construction</h2>
+          <p class="section-desc">
+            The user uploads AI papers; each PDF is parsed into a hierarchical document tree, enriched with semantic indices (PC-KMeans clusters and hyper-edges), and queried through tri-modal retrieval for filtering. The user then asks follow-up questions about the filtered papers.
+          </p>
         </div>
+    
+        <div class="arch-figure-wrapper">
+          <figure class="figure figure-large">
+            <img
+              src="figures/index.png"
+              alt="Index construction pipeline"
+              loading="lazy"
+            />
+          </figure>
+        </div>
+      </div>
     </section>
-
+    
     <!-- Demo System Layout Figure -->
     <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">Interface</div>
-                <h2 class="section-title">Demo System Layout</h2>
-                <p class="section-desc">
-                    Two-column interface: document management and tree visualization on the left,
-                    filtering conditions and RAG chat on the right.
-                </p>
-            </div>
-            <div class="arch-figure-wrapper">
-                <div class="figure-placeholder large" id="arch-fig-demo">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                    <p>Demo System Layout Figure</p>
-                    <span class="figure-placeholder-hint">Image will be inserted here</span>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Interface</div>
+          <h2 class="section-title">Demo System Layout</h2>
+          <p class="section-desc">
+              The DocMaster web interface: users can issue natural-language filter queries, explore the document-tree index, tune hyperparameters, and compare filtering results side by side.
+          </p>
         </div>
+    
+        <div class="arch-figure-wrapper">
+          <figure class="figure figure-large">
+            <img
+              src="figures/demo.png"
+              alt="Demo system layout"
+              loading="lazy"
+            />
+          </figure>
+        </div>
+      </div>
     </section>
 
     <footer id="main-footer"></footer>
