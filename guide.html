@@ -19,7 +19,7 @@
             <h1 class="subpage-title">Get Started with DocMaster</h1>
             <p class="subpage-desc">
                 DocMaster makes it easy to filter and analyze large document collections using natural language.
-                Follow these five simple steps to go from raw PDFs to intelligent insights.
+                Follow these five simple steps to go from raw documents to intelligent insights.
             </p>
         </div>
     </section>
@@ -31,16 +31,18 @@
                 <div class="section-label">Interface Overview</div>
                 <h2 class="section-title">Demo System Layout</h2>
                 <p class="section-desc">
-                    DocMaster uses a clean two-column layout: manage your documents on the left, filter and chat on the right.
+                    The DocMaster web interface: users can issue natural-language filter queries, explore the document-tree index, tune hyperparameters, and compare filtering results side by side.
                 </p>
             </div>
-            <div class="arch-figure-wrapper">
-                <div class="figure-placeholder large" id="guide-fig-demo">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                    <p>Demo System Layout Figure</p>
-                    <span class="figure-placeholder-hint">Image will be inserted here</span>
-                </div>
-            </div>
+        <div class="arch-figure-wrapper">
+          <figure class="figure figure-large">
+            <img
+              src="figures/demo.png"
+              alt="Demo system layout"
+              loading="lazy"
+            />
+          </figure>
+        </div>
         </div>
     </section>
 
@@ -58,10 +60,10 @@
                     <div class="guide-step-number">1</div>
                     <div class="guide-step-content">
                         <h3>Upload Your Documents</h3>
-                        <p>Head to the <a href="demo.html">live demo</a> and drag-and-drop your PDF files into the upload area. DocMaster will automatically parse each document, extract its structure, and build a semantic index &mdash; all in the background.</p>
+                        <p>Head to the <a href="demo.html">live demo</a> and drag-and-drop your documents into the upload area. DocMaster will automatically parse each document, extract its structure, and build a semantic index &mdash; all in the background.</p>
                         <div class="guide-detail-box">
-                            <strong>What happens behind the scenes:</strong> Each PDF is parsed with MinerU to extract headings, paragraphs, figures, and tables. A hierarchical document tree is built, embeddings are computed, and a FAISS index is created for fast retrieval.<br><br>
-                            <strong>Tip:</strong> You can upload multiple PDFs at once. The system handles collections of up to 50 MB per file.
+                            <strong>What happens behind the scenes:</strong> Each document is parsed with MinerU to extract headings, paragraphs, figures, and tables. A hierarchical document tree is built, embeddings are computed, and a FAISS index is created for fast retrieval.<br><br>
+                            <strong>Tip:</strong> You can upload multiple documents at once. The system handles collections of up to 50 MB per file.
                         </div>
                     </div>
                 </div>
