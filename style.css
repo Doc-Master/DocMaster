@@ -2324,6 +2324,13 @@ footer a:hover { text-decoration: underline; }
     line-height: 1.5;
 }
 
+.figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px; /* optional */
+}
+
 /* ── Architecture Page ── */
 .arch-figure-wrapper {
     max-width: 900px;
